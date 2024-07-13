@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <h1>
+          One Credit Course Excemption
+                  Portal
+        </h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
-
-          WELCOME MIDHUNKUMAR
+          Login with bitsathy
+          gmail
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+       <span>
+       <GoogleLogin
+  onSuccess={credentialResponse => {
+    const decoded = jwtDecode(credentialResponse?.credential);
+    console.log(decoded);
+  }}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+/>
+       </span>
       </header>
+      
     </div>
   );
 }
