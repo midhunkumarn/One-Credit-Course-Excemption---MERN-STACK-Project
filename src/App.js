@@ -1,5 +1,6 @@
 import logo from './logo.png';
 import './App.css';
+import dash from './component/home';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 
@@ -7,7 +8,8 @@ import { jwtDecode } from "jwt-decode";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+    
+      <div className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>
           One Credit Course Excemption
@@ -17,7 +19,7 @@ function App() {
           Login with bitsathy
           gmail
         </p>
-       <span>
+        <span>
        <GoogleLogin
   onSuccess={credentialResponse => {
     const decoded = jwtDecode(credentialResponse?.credential);
@@ -28,8 +30,8 @@ function App() {
   }}
 />
        </span>
-      </header>
-      
+      </div>
+     
     </div>
   );
 }
