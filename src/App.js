@@ -1,38 +1,25 @@
-import logo from './logo.png';
 import './App.css';
-import dash from './component/home';
-import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from "jwt-decode";
-
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import Home from './component/Home';
+import Details from './component/Details';
+import Login from './component/Login';
 
 function App() {
   return (
     <div className="App">
+      <BrowserRouter>
+      <Routes>
+        <Route path="/home" element={<Home/>}/> 
+        <Route path="/details" element={<Details/>}/>
+        <Route path="/" element={<Login/>}/>
+      </Routes>
+    </BrowserRouter>
     
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>
-          One Credit Course Excemption
-                  Portal
-        </h1>
-        <p>
-          Login with bitsathy
-          gmail
-        </p>
-        <span>
-       <GoogleLogin
-  onSuccess={credentialResponse => {
-    const decoded = jwtDecode(credentialResponse?.credential);
-    console.log(decoded);
-  }}
-  onError={() => {
-    console.log('Login Failed');
-  }}
-/>
-       </span>
-      </div>
-     
+    
     </div>
+   
+    
+         
   );
 }
 
