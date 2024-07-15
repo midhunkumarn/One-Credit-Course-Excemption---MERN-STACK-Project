@@ -1,0 +1,9 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.sidebar{
+    width: 280px;
+    height:100%;
+    background-color: #d5dceb;
+}

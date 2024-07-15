@@ -1,11 +1,12 @@
+import React from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
-import logo from './logo.png';
-import './App.css';
+import logo from '../logo.png';
+import '../App.css';
 
 export default function Login(){
     return(
-        <div>
+        <div className='Student'>
     <img src={logo} className="App-logo" alt="logo" />
               <h1>
                 One Credit Course Excemption
