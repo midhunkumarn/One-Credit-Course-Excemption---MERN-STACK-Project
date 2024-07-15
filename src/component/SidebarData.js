@@ -17,7 +17,7 @@ export const SidebarData = [
        {
         title:"Excemption",
         icon:<HistoryToggleOffIcon/>,
-        link:"/home"
+        link:"/excemption"
        },
 ]
 
