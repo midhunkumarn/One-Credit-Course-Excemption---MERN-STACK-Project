@@ -5,6 +5,10 @@ import logo from '../logo.png';
 import './Login.css';
 
 export default function Login(){
+
+  const loginwithgoogle = ()=>{
+    window.open("http://localhost:6005/auth/google/callback","_self")
+  }
     return(
         <div className='Student'>
     <img src={logo} className="App-logo" alt="logo" />
@@ -17,7 +21,7 @@ export default function Login(){
                 gmail
               </p>
               <span>
-             <GoogleLogin
+             <GoogleLogin className='login-with-google-btn' onClick={loginwithgoogle}
         onSuccess={credentialResponse => {
           const decoded = jwtDecode(credentialResponse?.credential);
           console.log(decoded);
@@ -26,7 +30,7 @@ export default function Login(){
           console.log('Login Failed');
         }}
       />
-             </span>
+           </span>
     </div>
     );
 }
