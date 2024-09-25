@@ -1,0 +1,42 @@
+.profile-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px;
+    height: fit-content;
+    width: 800px;
+    max-width: 400px;
+    box-shadow: 0 2px 8px rgb(143, 143, 143);
+    background:linear-gradient(0deg, rgba(157,139,139,1) 0%, rgba(20,7,27,1) 100%);
+    text-align: center; /* Center align the text */
+}
+
+.profile-photo {
+    width: 100px; /* Set a fixed width */
+    height: 100px; /* Set a fixed height */
+    border-radius: 50%; /* Make it a circle */
+    object-fit: cover; /* Crop the image to fit */
+    margin-bottom: 16px; /* Space below the photo */
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.profile-status {
+    font-size: 18px;
+    color: #e6cda9;
+    margin-bottom: 8px;
+}
+
+.profile-department, .profile-email, .profile-phone {
+    font-size: 16px;
+    margin: 5px 0;
+}
+.profile-email .profile-phone,a{
+    text-decoration: none;
+    color: rgb(198, 190, 190);
+}

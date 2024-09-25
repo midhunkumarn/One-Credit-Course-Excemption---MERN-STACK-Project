@@ -1,0 +1,38 @@
+.exemption-count-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    
+    margin: 20px;
+    height: fit-content;
+    width: 300px; /* Consistent width with CourseCountCard */
+    max-width: 100%; /* Ensure it adapts to the container */
+    box-shadow: 0 2px 8px rgba(143, 143, 143, 0.6);
+    background: linear-gradient(0deg, rgba(157, 139, 139, 1) 0%, rgba(20, 7, 27, 1) 100%);
+    text-align: center;
+}
+
+.exemption-count-title {
+    font-size: 18px; /* Smaller font for consistency */
+    margin-bottom: 10px;
+    color: white;
+}
+
+.exemption-count {
+    font-size: 30px; /* Reduced size to match other cards */
+    font-weight: bold;
+    color: #ff9800;
+}
+/* Common Card CSS (you can adjust as needed) */
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px;
+    height: fit-content;
+    width: 300px; /* Adjust width as needed */
+    box-shadow: 0 2px 8px rgb(143, 143, 143);
+    background: linear-gradient(0deg, rgba(157, 139, 139, 1) 0%, rgba(20, 7, 27, 1) 100%);
+    text-align: center; /* Center align the text */
+}
+

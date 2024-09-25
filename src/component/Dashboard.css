@@ -1,0 +1,71 @@
+/* src/component/Dashboard.css */
+.dashboard-container {
+    display: flex;
+    flex-direction: column; /* Header on top */
+    height: 100vh; /* Full height */
+}
+
+.main-content {
+    display: flex; /* Sidebar and content in a row */
+    flex: 1; /* Take up the remaining space */
+    background-color: #f4f4f4; /* Light background for the main content */
+}
+
+.Sidebar {
+    width: 220px; /* Slightly wider sidebar */
+    background-color: #293846; /* Dark color for the sidebar */
+    height: 100vh; /* Full height of the viewport */
+    padding-top: 20px; /* Add padding at the top */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+}
+
+.Sidebar .menu-item {
+    padding: 15px 20px;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    border-bottom: 1px solid #444;
+}
+
+.Sidebar .menu-item:hover {
+    background-color: #1f2a37;
+}
+
+.content-area {
+    flex: 1;
+    padding: 20px 20px 0; /* Reduce top padding */
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; /* Center the cards horizontally */
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.card-container {
+    display: flex;
+    justify-content: flex-start; /* Align cards to the start of the row */
+    gap: 20px; /* Space between cards */
+    flex-wrap: wrap; /* Wrap cards to next line on smaller screens */
+    width: 100%; /* Ensure container takes full width */
+    max-width: 1200px; /* Limit max width */
+    margin: 0 auto; /* Center the card container */
+}
+
+.card-container .card {
+    flex: 1;
+    min-width: 250px; /* Ensure cards don't get too small */
+    max-width: 350px; /* Limit the card width */
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s; /* Smooth hover effect */
+    margin-bottom: 10px; /* Reduced margin-bottom */
+}
+
+.card-container .card:hover {
+    transform: translateY(-5px); /* Lift the card slightly on hover */
+}
