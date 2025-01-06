@@ -1,8 +1,11 @@
 import React from 'react'
+import ExcemptionCard from './ExcemptionCard'
 
-export default function Excemption (){
+const Excemption = () => {
+
   return (
-    <h1>Excemption</h1>
-  )
-}
+    <ExcemptionCard />
+  );
+};
 
+export default Excemption;

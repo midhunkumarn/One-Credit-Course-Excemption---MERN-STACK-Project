@@ -1,49 +1,49 @@
 .login-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Full viewport height */
-  background-color: #f4f4f4; /* Light background for contrast */
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+  background-color: #f4f4f4; 
 }
 
 .login-card {
-  display: flex; /* Enable flexbox */
-  flex-direction: column; /* Arrange children vertically */
-  justify-content: center; /* Center children vertically */
-  align-items: center; /* Center children horizontally */
-  background-color: white; /* White background for the card */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  padding: 30px; /* Padding inside the card */
-  text-align: center; /* Center align text */
-  width: auto; /* Adjust width as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  background-color: white; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+  padding: 30px;
+  text-align: center; 
+  width: auto; 
   height: fit-content;
 }
 
 .App-logo {
-  width: 100px; /* Set logo width */
-  margin-bottom: 20px; /* Space below logo */
+  width: 100px; 
+  margin-bottom: 20px;
 }
 
 .Loginh1 {
-  margin: 0; /* Remove margin */
-  font-size: 24px; /* Title font size */
-  color: black; /* Change to black for better visibility on white background */
+  margin: 0; 
+  font-size: 24px; 
+  color: black; 
 }
 
 .login-with-google-btn {
-  width: 100%; /* Full width of the card */
-  padding: 20px; /* Padding for the button */
-  background-color: #4285F4; /* Google blue */
-  color: white; /* Text color */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s; /* Smooth background transition */
-  margin-top: 20px; /* Space above the button */
-  text-align: center; /* Center text in the button */
+  width: 100%;
+  padding: 20px; 
+  background-color: #4285F4; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+  margin-top: 20px; 
+  text-align: center;
 }
 
 .login-with-google-btn:hover {
-  background-color: #357ae8; /* Darker blue on hover */
+  background-color: #357ae8; 
 }

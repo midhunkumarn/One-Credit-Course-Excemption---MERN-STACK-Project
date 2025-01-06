@@ -1,5 +1,5 @@
 import React from 'react';
-import './ExemptionCountCard.css'; // Import the corresponding CSS
+import './ExemptionCountCard.css'; 
 
 const ExemptionCountCard = ({ exemptionCount }) => {
     return (

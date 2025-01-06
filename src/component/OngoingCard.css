@@ -1,0 +1,66 @@
+.ongoing-card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 30px; 
+    padding: 20px;
+    margin-top: 30px;
+    justify-items: center; 
+    max-width: calc(100% - 350px);
+    margin-left: 325px; 
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+
+.ongoing-card {
+    
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%; 
+    max-width: 700px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start; 
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ongoing-card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.course-name {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: left; 
+    font-weight: bold;
+    color: #333;
+}
+
+.course-details {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.course-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    width: 100%; 
+}
+
+.course-info strong {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.course-info:last-child {
+    border-bottom: none;
+}

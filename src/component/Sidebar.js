@@ -4,9 +4,8 @@ import { SidebarData } from './SidebarData';
 
 export default function Sidebar() {
     const handleLogout = () => {
-        // Perform logout logic (e.g., clear token)
-        localStorage.removeItem('userToken'); // Example of removing token
-        window.location.pathname = '/login'; // Redirect to login page
+        localStorage.removeItem('userToken'); 
+        window.location.pathname = '/login'; 
     };
 
     return (

@@ -1,28 +1,37 @@
 import React from 'react';
-import HomeIcon from '@mui/icons-material/Home';
-import DetailsIcon from '@mui/icons-material/Details';
-import HistoryToggleOffIcon from '@mui/icons-material/HistoryToggleOff';
-import LogoutIcon from '@mui/icons-material/Logout'; // Import the Logout icon
+import { FaHome, FaGraduationCap, FaUserCircle, FaSignOutAlt } from 'react-icons/fa'; // Importing icons
 
 export const SidebarData = [
     {
         title: "Home",
-        icon: <HomeIcon />,
-        link: "/home"
+        icon: <FaHome />,
+        link: "/home",
     },
     {
-        title: "Details",
-        icon: <DetailsIcon />,
-        link: "/details"
+        title: "Ongoing Courses",
+        icon: <FaGraduationCap />,
+        link: "/Ongoing",
     },
     {
-        title: "Exemption", // Corrected the spelling here
-        icon: <HistoryToggleOffIcon />,
-        link: "/exemption"
+        title: "Completed Courses",
+        icon: <FaGraduationCap />,
+        link: "/Completed",
     },
     {
-        title: "Logout", // Add logout entry
-        icon: <LogoutIcon />,
-        link: "/logout" // Temporary, we'll handle it differently
-    }
+        title:"Excemption",
+        icon: <FaGraduationCap />,
+        link: "/Excemption",
+       
+    },
+    {
+        title: "Profile",
+        icon: <FaUserCircle />,
+        link: "/profile",
+    },
+    {
+        title: "Logout",
+        icon: <FaSignOutAlt />,
+        link: "/login",
+    },
+    
 ];

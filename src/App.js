@@ -1,28 +1,28 @@
-import Dashboard from './component/Dashboard';
-import Details from './component/Details';
+import Completed from './component/Completed';
+import Ongoing from './component/Ongoing';
 import Login from './component/Login';
 import Home from './component/Home';
 import Excemption from './component/Excemption';
-
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import Sidebar from './component/Sidebar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Login/>} />
-        <Route path='/dashboard' element={<Dashboard/>} />
-        <Route path='/details' element={<Details/>} />
-        <Route path='/home' element={<Home/>} />
-        <Route path='/excemption' element={<Excemption/>} />
-       
-      </Routes>
-    </BrowserRouter>
+        <Sidebar />
+
+        <div className="main-content">
+          <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='/home' element={<Home />} />
+            <Route path='/ongoing' element={<Ongoing />} />
+            <Route path='/completed' element={<Completed />} />
+            <Route path='/excemption' element={<Excemption />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
-   
-    
-         
   );
 }
 
