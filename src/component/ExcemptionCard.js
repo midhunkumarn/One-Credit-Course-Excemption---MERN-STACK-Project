@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ExcemptionCard.css';
+import Sidebar from './Sidebar';
 
 const ExcemptionCard = () => {
   const [courseDetails, setCourseDetails] = useState({
@@ -32,7 +33,7 @@ const ExcemptionCard = () => {
 
   return (
     <div className="excemption-card-container">
-     
+     <Sidebar />
       {!isSubmitted ? (
         <form onSubmit={handleSubmit} className="course-form">
           <h3>Enter Course Exemption Details</h3>

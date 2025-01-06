@@ -5,6 +5,7 @@ const Ongoing = () => {
 
   return (
     <OngoingCard />
+    
   );
 };
 

@@ -11,7 +11,7 @@ const handleLoginSuccess = (credentialResponse) => {
 try {
   const decoded = jwtDecode(credentialResponse.credential);
   console.log('Decoded JWT:', decoded);
-  navigate('/dashboard'); 
+  navigate('/home'); 
   } catch (error) {
     console.error('Error decoding JWT:', error);
   }

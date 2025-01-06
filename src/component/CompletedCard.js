@@ -1,5 +1,6 @@
 import React from 'react';
 import './CompletedCard.css'; 
+import Sidebar from './Sidebar';
 
 const CompletedCard = () => {
   const completedCourse1 = {
@@ -44,7 +45,7 @@ const CompletedCard = () => {
 
   return (
     <div className="completed-card-container">
-      {/* Course 1 */}
+      <Sidebar />
       <div className="completed-card">
         <h3 className="course-name">{completedCourse1.name}</h3>
         <div className="course-details">

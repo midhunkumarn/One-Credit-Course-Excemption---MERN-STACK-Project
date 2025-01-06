@@ -1,5 +1,6 @@
 import React from 'react';
 import './OngoingCard.css'; 
+import Sidebar from './Sidebar';
 
 const OngoingCard = () => {
   const courses = [
@@ -35,7 +36,9 @@ const OngoingCard = () => {
 
   return (
     
+        
       <div className="ongoing-card-container">
+      <Sidebar />
         {courses.map((course, index) => (
           <div key={index} className="ongoing-card">
             <h3 className="course-name">{course.name}</h3>
@@ -56,6 +59,7 @@ const OngoingCard = () => {
           </div>
         ))}
       </div>
+      
   );
 };
 

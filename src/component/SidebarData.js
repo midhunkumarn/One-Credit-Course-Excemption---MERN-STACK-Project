@@ -23,11 +23,11 @@ export const SidebarData = [
         link: "/Excemption",
        
     },
-    {
-        title: "Profile",
-        icon: <FaUserCircle />,
-        link: "/profile",
-    },
+    // {
+    //     title: "Profile",
+    //     icon: <FaUserCircle />,
+    //     link: "/profile",
+    // },
     {
         title: "Logout",
         icon: <FaSignOutAlt />,
