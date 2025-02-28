@@ -1,102 +1,84 @@
-.dashboard-container {
+/* Home Container */
+.home-container {
     display: flex;
-    flex-direction: column;
-    height: 100vh;
+    width: 100vw;
+    min-height: 100vh; /* Ensure it expands when needed */
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable scrolling */
 }
 
-.main-content {
-    width: 100%;
-    display: flex;
-    flex: 1;
-    background-color: #ffffff;
-}
-
+/* Sidebar */
 .Sidebar {
     width: 250px;
-    background-color: #293846;
     height: 100vh;
-    padding-top: 30px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #2c3e50;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    transition: transform 0.3s ease-in-out;
 }
 
-.Sidebar .menu-item {
-    padding: 15px 20px;
-    color: white;
-    font-size: 16px;
-    border-bottom: 1px solid #444;
+/* Sidebar Hidden (Mobile) */
+@media (max-width: 768px) {
+    .Sidebar {
+        transform: translateX(-100%);
+    }
+
+    .Sidebar.active {
+        transform: translateX(0);
+    }
 }
 
-.Sidebar .menu-item:hover {
-    background-color: #1f2a37;
-}
-
+/* Main Content */
 .content-area {
-    margin-left: 250px; 
-    padding: 40px;
+    flex: 1;
+    margin-left: 250px; /* Sidebar takes up space */
+    padding: 30px;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    justify-content: flex-start; 
-    min-height: 100vh;
-    background-color: #ffffff;
-    overflow-y: auto;
+    background-color: #f8f9fa;
+    transition: margin-left 0.3s ease-in-out;
+    overflow-y: auto; /* Allows scrolling */
+    min-height: 100vh; /* Ensures it expands beyond screen height */
 }
 
-.profile-card {
-    width: 450px; 
-    background: linear-gradient(135deg, #2a2a72, #009ffd);
-    color: white;
-    border-radius: 10px;
-    padding: 30px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-bottom: 30px;
-    flex-shrink: 0;
+/* Fix for Mobile */
+@media (max-width: 768px) {
+    .content-area {
+        margin-left: 0;
+        height: auto;
+        min-height: 100vh;
+    }
 }
 
+/* Cards Container */
 .card-container {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Center the cards */
     gap: 20px;
-    flex-wrap: wrap; 
-    width: 100%; 
-    max-width: 1200px; 
+    margin: 20px 0; /* Avoid negative margins */
+    padding-bottom: 50px; /* Extra space at the bottom */
 }
 
-.card-container .card {
-    flex: 1;
-    min-width: 200px; 
-    max-width: 300px; 
-    background: linear-gradient(135deg, #2a2a72, #009ffd);
-    color: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center; 
-    transition: transform 0.2s;
-    flex-shrink: 0; 
+/* Toggle Button (Hidden on Desktop) */
+.toggle-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 101;
+    display: none;
 }
 
-.card-container .card:hover {
-    transform: translateY(-5px);
-}
-
-.card h3 {
-    margin-bottom: 10px;
-    font-size: 1.2em;
-    color: #ffd700; 
-}
-
-.card p {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: white;
-}
-
-.card p.status-approved {
-    color: #00ff00; 
+/* Show Toggle Button Only on Mobile */
+@media (max-width: 768px) {
+    .toggle-btn {
+        display: block;
+    }
 }

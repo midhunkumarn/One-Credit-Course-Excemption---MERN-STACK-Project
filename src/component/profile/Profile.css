@@ -1,42 +1,37 @@
 .profile-container {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 20px;
-    height: fit-content;
-    width: 800px;
-    max-width: 400px;
-    box-shadow: 0 2px 8px rgb(143, 143, 143);
-    background:linear-gradient(0deg, rgba(157,139,139,1) 0%, rgba(20,7,27,1) 100%);
-    text-align: center; /* Center align the text */
+    border: none;
+    border-radius: 16px;
+    padding: 24px;
+    margin: 20px auto;
+    width: 500px;
+    max-width: 90%;
+    min-width: 280px; /* Prevents it from being too small */
+    background: linear-gradient(135deg, #6A1B9A, #311B92);
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 40px;
+    
+    /* Move Left */
+    
+    /* Slightly less left movement for better alignment */
 }
 
-.profile-photo {
-    width: 100px; /* Set a fixed width */
-    height: 100px; /* Set a fixed height */
-    border-radius: 50%; /* Make it a circle */
-    object-fit: cover; /* Crop the image to fit */
-    margin-bottom: 16px; /* Space below the photo */
+/* Hover Effects */
+.profile-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border-color: #FFC107;
 }
 
-.profile-name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: white;
-}
-
-.profile-status {
-    font-size: 18px;
-    color: #e6cda9;
-    margin-bottom: 8px;
-}
-
-.profile-department, .profile-email, .profile-phone {
-    font-size: 16px;
-    margin: 5px 0;
-}
-.profile-email .profile-phone,a{
-    text-decoration: none;
-    color: rgb(198, 190, 190);
+/* Responsive: Adjust margins and width for smaller screens */
+@media (max-width: 768px) {
+    .profile-container {
+        width: 90%;
+        max-width: 350px; /* Prevents it from being too big */
+        left: 0; /* Reset position */
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

@@ -18,20 +18,18 @@ export const SidebarData = [
         link: "/Completed",
     },
     {
-        title:"Excemption",
+        title:"Exemption",
         icon: <FaGraduationCap />,
-        link: "/Excemption",
-       
+        link: "/Exemption",
     },
-    // {
-    //     title: "Profile",
-    //     icon: <FaUserCircle />,
-    //     link: "/profile",
-    // },
+    {
+        title: "Profile",
+        icon: <FaUserCircle />,
+        link: "/profile",
+    },
     {
         title: "Logout",
         icon: <FaSignOutAlt />,
         link: "/login",
     },
-    
 ];

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './Home.css'; 
 import Sidebar from './Sidebar';
-
 import Profile from './profile/Profile';
 import CourseCountCard from './CourseCountCard';
 import ExemptionCountCard from './ExemptionCountCard';
@@ -15,11 +14,12 @@ export default function Home() {
     const [dateTime, setDateTime] = useState(new Date().toLocaleString());
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isOpen, setIsOpen] = useState(false); // Sidebar state
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch("https://jsonplaceholder.typicode.com/users/1"); // Mock API for user data
+                const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
                 if (!response.ok) {
                     throw new Error("Failed to fetch user data");
                 }
@@ -52,24 +52,28 @@ export default function Home() {
 
     return (
         <div className="home-container">
-            <div className="main-content">
-                <Sidebar />
-                <div className="content-area">
-                    {user && (
-                        <Profile
-                            name={user.name}
-                            active={user.active}
-                            department={user.department}
-                            gmail={user.gmail}
-                            phone={user.phone}
-                            photo={user.photo}
-                        />
-                    )}
-                    <div className="card-container">
-                        <CourseCountCard completedCourses={completedCourses} />
-                        <ExemptionCountCard exemptionCount={exemptionCount} />
-                        <ExemptionStatusCard status={exemptionStatus} dateTime={dateTime} />
-                    </div>
+            {/* Toggle Button (Only visible in Mobile View) */}
+            <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
+                ☰
+            </button>
+
+            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+
+            <div className="content-area">
+                {user && (
+                    <Profile
+                        name={user.name}
+                        active={user.active}
+                        department={user.department}
+                        gmail={user.gmail}
+                        phone={user.phone}
+                        photo={user.photo}
+                    />
+                )}
+                <div className="card-container">
+                    <CourseCountCard completedCourses={completedCourses} />
+                    <ExemptionCountCard exemptionCount={exemptionCount} />
+                    <ExemptionStatusCard status={exemptionStatus} dateTime={dateTime} />
                 </div>
             </div>
         </div>

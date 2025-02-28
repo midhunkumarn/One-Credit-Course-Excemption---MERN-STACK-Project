@@ -1,37 +1,45 @@
 .exemption-status-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: none;
+    border-radius: 12px;
     padding: 20px;
     margin: 20px;
-    max-width: 300px; 
-    box-shadow: 0 2px 8px rgba(143, 143, 143, 0.6);
-    background: linear-gradient(0deg, rgba(157, 139, 139, 1) 0%, rgba(20, 7, 27, 1) 100%);
-    text-align: center; 
-    flex: 1; 
+    max-width: 320px;
+    background: linear-gradient(135deg, #4A148C, #2E1A47);
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1;
+}
 
+.exemption-status-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .exemption-status-title {
-    font-size: 20px; 
-    margin-bottom: 10px; 
-    color: #ffff;
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #ffffff;
+    font-weight: 600;
 }
 
 .exemption-status {
-    font-size: 18px; 
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .exemption-status.approved {
-    color: #4caf50; 
+    color: #2ECC71; /* Vibrant Green */
+    text-shadow: 1px 1px 4px rgba(46, 204, 113, 0.6);
 }
 
 .exemption-status.pending {
-    color: #ff9800; 
+    color: #00E5FF; /* Modern Cyan */
+    text-shadow: 1px 1px 4px rgba(0, 229, 255, 0.6);
 }
 
 .exemption-date, .exemption-time {
     font-size: 14px;
-    color: #cbc3c3;
+    color: #CBC3C3;
 }
