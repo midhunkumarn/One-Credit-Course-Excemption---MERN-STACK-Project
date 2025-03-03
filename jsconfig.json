@@ -5,6 +5,6 @@
         "@/*": ["./*"]
       }
     },
-    "include": ["src"]
+    "include": ["src", "backend/server.js"]
   }
   

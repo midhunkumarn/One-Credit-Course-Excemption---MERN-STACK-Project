@@ -1,0 +1,138 @@
+/* Faculty Dashboard Layout */
+.faculty-dashboard {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+}
+
+/* Sidebar Styling */
+.Sidebar {
+    width: 270px;
+    height: 100vh;
+    background: #2C3E50; /* Dark Blue Shade */
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    padding-top: 20px;
+}
+
+.Sidebar.active {
+    transform: translateX(0);
+}
+
+/* Sidebar Hidden in Mobile View */
+@media screen and (max-width: 768px) {
+    .Sidebar {
+        transform: translateX(-100%);
+    }
+    .Sidebar.active {
+        transform: translateX(0);
+    }
+}
+
+/* Main Content */
+.dashboard-content {
+    flex-grow: 1;
+    margin-left: 270px; /* Space for sidebar */
+    padding: 30px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* When Sidebar is Hidden (Mobile View) */
+@media screen and (max-width: 768px) {
+    .dashboard-content {
+        margin-left: 0;
+    }
+}
+
+/* Overlay for Mobile Sidebar */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Sidebar Toggle Button */
+.toggle-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: #34495E;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1100;
+    border-radius: 6px;
+}
+
+/* Hide Toggle Button on Desktop */
+@media screen and (min-width: 769px) {
+    .toggle-btn {
+        display: none;
+    }
+}
+
+/* Cards Section - Grid Layout */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* Individual Card Styling */
+.card {
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    transition: transform 0.2s ease-in-out;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Fix text alignment inside the Overall List card */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* ✅ Ensures text remains centered */
+    padding: 30px; /* ✅ Adds extra space for better text placement */
+}
+
+
+/* Hover Effect */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Light Themed Colors for Status Cards */
+.pending { background-color: #FFD3B6; color: #7A4A36; }      /* Light Peach */
+.approved { background-color: #B8E0D2; color: #2C786C; }    /* Soft Teal */
+.rejected { background-color: #F5B7B1; color: #C0392B; }    /* Light Coral */
+.overall { background-color: #D4E6F1; color: #2874A6; }      /* Light Blue */
+
+/* Mobile Responsive Cards */
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+}

@@ -5,27 +5,27 @@
     margin: 20px;
     width: 320px;
     max-width: 100%;
-    background: linear-gradient(135deg, #4A148C, #2E1A47);
+    background: linear-gradient(135deg, #F7E0C2, #F4D8B4); /* Warm light cream */
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .exemption-count-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
 .exemption-count-title {
     font-size: 20px;
     margin-bottom: 12px;
-    color: #ffffff;
+    color: #7A5230; /* Rich brown for good contrast */
     font-weight: 600;
 }
 
 .exemption-count {
     font-size: 36px;
     font-weight: bold;
-    color: #00E5FF; /* Gold */
-    text-shadow: 1px 1px 4px rgba(255, 215, 0, 0.6);
+    color: #C47A00; /* Warm golden tone */
+    text-shadow: 1px 1px 4px rgba(196, 122, 0, 0.5);
 }

@@ -1,0 +1,55 @@
+/* FacultySidebar.css */
+.Sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #333;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    .Sidebar {
+        transform: translateX(-100%);
+    }
+    .Sidebar.active {
+        transform: translateX(0);
+    }
+}
+
+/* Overlay (for closing in mobile view) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Toggle Button (only on mobile) */
+.toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: #444;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+@media screen and (min-width: 769px) {
+    .toggle-btn {
+        display: none;
+    }
+}

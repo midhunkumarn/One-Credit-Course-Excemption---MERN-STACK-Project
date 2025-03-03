@@ -1,11 +1,19 @@
 import React from 'react';
 import './Sidebar.css';
 import { SidebarData } from './SidebarData';
+import { useNavigate } from 'react-router-dom';
 
 export default function Sidebar({ isOpen, setIsOpen }) {
+    const navigate = useNavigate(); // ✅ Use React Router for navigation
+
+    if (typeof setIsOpen !== 'function') {
+        console.error("setIsOpen is not a function. Make sure Sidebar is receiving the prop correctly.");
+        return null;
+    }
+
     const handleLogout = () => {
-        localStorage.removeItem('userToken');
-        window.location.pathname = '/login';
+        localStorage.removeItem('user'); // ✅ Ensure correct key is removed
+        navigate('/logout'); // ✅ Redirect using React Router
     };
 
     return (
@@ -27,7 +35,11 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                             id={window.location.pathname === val.link ? "active" : ""}
                             onClick={() => {
                                 setIsOpen(false); // Close sidebar after clicking
-                                val.title === "Logout" ? handleLogout() : window.location.pathname = val.link;
+                                if (val.title === "Logout") {
+                                    handleLogout(); // ✅ Call logout function
+                                } else {
+                                    navigate(val.link); // ✅ Use React Router
+                                }
                             }}
                         >
                             <div id="icon">{val.icon}</div>
