@@ -49,16 +49,32 @@ export default function PendingList({ onApprove, onReject }) {
         }
     };
 
-    const handleReject = () => {
-        if (!selectedRequest || !reason) {
+    const handleReject = async () => {
+        if (!selectedRequest || !reason.trim()) {
             alert("Please provide a reason for rejection.");
             return;
         }
-        onReject({ ...selectedRequest, rejectedDate: new Date().toISOString().split("T")[0], reason });
-        setPendingRequests(pendingRequests.filter(req => req._id !== selectedRequest._id));
-        setSelectedRequest(null);
-        setReason("");
+    
+        try {
+            const response = await fetch("http://localhost:5000/home/reject", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ _id: selectedRequest._id, reason }) // Send rejection data
+            });
+    
+            if (response.ok) {
+                console.log("❌ Request rejected successfully!");
+                setPendingRequests(pendingRequests.filter(req => req._id !== selectedRequest._id));
+                setSelectedRequest(null);
+                setReason(""); // Clear reason input
+            } else {
+                console.error("❌ Failed to reject request:", await response.text());
+            }
+        } catch (error) {
+            console.error("❌ Error rejecting request:", error);
+        }
     };
+    
 
     return (
         <div className="faculty-container">

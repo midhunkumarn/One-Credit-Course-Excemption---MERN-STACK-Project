@@ -23,11 +23,6 @@ export const SidebarData = [
         link: "/faculty/rejected",
     },
     {
-        title: "Overall",
-        icon: <FaUserCircle />,
-        link: "/faculty/all",
-    },
-    {
         title: "Logout",
         icon: <FaSignOutAlt />,
         link: null, // Prevent direct navigation

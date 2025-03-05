@@ -38,7 +38,8 @@ async function database_connection() {
 
 // Import Routes (After DB Connection)
 app.use("/home", require("./home/pending.js")); 
-app.use("/approve", require("./home/approve.js")); 
+app.use("/approve", require("./home/approve.js"));
+app.use("/reject", require("./home/reject.js")); 
 
 
 // Ensure database connection before server starts

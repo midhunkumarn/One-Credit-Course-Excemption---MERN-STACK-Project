@@ -43,7 +43,6 @@ function App() {
                 <Route path="/faculty/pending" element={<PendingList onApprove={handleApprove} onReject={handleReject} />} />
                 <Route path="/faculty/approved" element={<ApprovedList approvedRequests={approvedRequests} />} />
                 <Route path="/faculty/rejected" element={<RejectedList rejectedRequests={rejectedRequests} />} />
-                <Route path="/faculty/all" element={<OverallList />} />
             </Routes>
         </BrowserRouter>
     );
