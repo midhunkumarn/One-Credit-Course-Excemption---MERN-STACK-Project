@@ -2,26 +2,30 @@ import { useState, useEffect } from "react";
 import FacultySidebar from "./FacultySidebar";
 import "./PendingList.css"; // Import styles
 
-export default function PendingList({ onApprove, onReject }) {
+export default function PendingList() {
     const [pendingRequests, setPendingRequests] = useState([]);
+    const [rejectedRequests, setRejectedRequests] = useState([]);
     const [selectedRequest, setSelectedRequest] = useState(null);
     const [reason, setReason] = useState("");
 
     // ✅ Fetch Pending Requests from Backend
     useEffect(() => {
-        fetch("http://localhost:5000/home/pendinglist") // Backend URL
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log("📩 Data received from backend:", data); // Debugging
-                setPendingRequests(data);
-            })
-            .catch(error => console.error("❌ Error fetching pending requests:", error));
+        fetchPendingRequests();
     }, []);
+
+    const fetchPendingRequests = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/home/pendinglist"); // Backend URL
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log("📩 Data received from backend:", data); // Debugging
+            setPendingRequests(data);
+        } catch (error) {
+            console.error("❌ Error fetching pending requests:", error);
+        }
+    };
 
     const handleVerify = (request) => {
         setSelectedRequest(request);
@@ -29,14 +33,14 @@ export default function PendingList({ onApprove, onReject }) {
 
     const handleApprove = async () => {
         if (!selectedRequest) return;
-    
+
         try {
             const response = await fetch("http://localhost:5000/home/approve", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ _id: selectedRequest._id }) // Sending object ID
             });
-    
+
             if (response.ok) {
                 console.log("✅ Request approved successfully!");
                 setPendingRequests(pendingRequests.filter(req => req._id !== selectedRequest._id));
@@ -54,17 +58,24 @@ export default function PendingList({ onApprove, onReject }) {
             alert("Please provide a reason for rejection.");
             return;
         }
-    
+
         try {
             const response = await fetch("http://localhost:5000/home/reject", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ _id: selectedRequest._id, reason }) // Send rejection data
             });
-    
+
             if (response.ok) {
-                console.log("❌ Request rejected successfully!");
+                const result = await response.json();
+                console.log("❌ Request rejected successfully!", result);
+
+                // ✅ Remove request from pending list
                 setPendingRequests(pendingRequests.filter(req => req._id !== selectedRequest._id));
+
+                // ✅ Add to rejected list
+                setRejectedRequests(prev => [...prev, { ...selectedRequest, reason }]);
+
                 setSelectedRequest(null);
                 setReason(""); // Clear reason input
             } else {
@@ -74,7 +85,6 @@ export default function PendingList({ onApprove, onReject }) {
             console.error("❌ Error rejecting request:", error);
         }
     };
-    
 
     return (
         <div className="faculty-container">
@@ -107,6 +117,9 @@ export default function PendingList({ onApprove, onReject }) {
                         <p>No pending requests found.</p>
                     )}
                 </div>
+
+                {/* ✅ Rejected Requests Section */}
+               
             </div>
 
             {selectedRequest && (
@@ -120,17 +133,17 @@ export default function PendingList({ onApprove, onReject }) {
                         <p><strong>Exemption Requested:</strong> {selectedRequest.exemptionRequested}</p>
                         <p><strong>Request Date:</strong> {selectedRequest.requestDate}</p>
 
-                        <div className="modal-buttons">
-                            <button className="approve-btn" onClick={handleApprove}>Approve</button>
-                            <button className="reject-btn" onClick={handleReject}>Reject</button>
-                        </div>
-
                         <textarea
                             className="reject-reason"
                             placeholder="Reason for rejection (if any)"
                             value={reason}
                             onChange={(e) => setReason(e.target.value)}
                         ></textarea>
+
+                        <div className="modal-buttons">
+                            <button className="approve-btn" onClick={handleApprove}>Approve</button>
+                            <button className="reject-btn" onClick={handleReject}>Reject</button>
+                        </div>
 
                         <button className="close-btn" onClick={() => setSelectedRequest(null)}>Close</button>
                     </div>

@@ -1,16 +1,27 @@
 import { useState, useEffect } from "react";
 import FacultySidebar from "./FacultySidebar";
-import "./RejectedList.css"; 
+import "./RejectedList.css";
 
 export default function RejectedList() {
     const [rejectedRequests, setRejectedRequests] = useState([]);
 
     // ✅ Fetch rejected requests from backend on component mount
     useEffect(() => {
-        fetch("http://localhost:5000/home/rejectedlist") 
-            .then(response => response.json())
-            .then(data => setRejectedRequests(data))
-            .catch(error => console.error("❌ Error fetching rejected requests:", error));
+        const fetchRejectedRequests = async () => {
+            try {
+                const response = await fetch("http://localhost:5000/reject/rejectedlist");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log("📩 Fetched rejected requests:", data);
+                setRejectedRequests(data);
+            } catch (error) {
+                console.error("❌ Error fetching rejected requests:", error);
+            }
+        };
+        
+        fetchRejectedRequests();
     }, []);
 
     return (
@@ -31,15 +42,15 @@ export default function RejectedList() {
                     </div>
                     {rejectedRequests.length > 0 ? (
                         rejectedRequests.map((request, index) => (
-                            <div key={index} className="card-table-row">
-                                <span>{request.name}</span>
-                                <span>{request.rollNumber}</span>
-                                <span>{request.department}</span>
-                                <span>{request.completedCourses?.join(", ")}</span>
-                                <span>{request.exemptionRequested}</span>
-                                <span>{request.requestDate}</span>
-                                <span>{request.rejectedDate}</span>
-                                <span>{request.reason}</span>
+                            <div key={request._id || index} className="card-table-row">
+                                <span>{request.name || "N/A"}</span>
+                                <span>{request.rollNumber || "N/A"}</span>
+                                <span>{request.department || "N/A"}</span>
+                                <span>{request.completedCourses?.join(", ") || "None"}</span>
+                                <span>{request.exemptionRequested || "N/A"}</span>
+                                <span>{new Date(request.requestDate).toLocaleDateString() || "N/A"}</span>
+                                <span>{new Date(request.rejectedDate).toLocaleDateString() || "N/A"}</span>
+                                <span>{request.reason || "No reason provided"}</span>
                             </div>
                         ))
                     ) : (

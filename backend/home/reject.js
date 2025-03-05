@@ -1,11 +1,12 @@
 const express = require("express");
-const router = express.Router();
 const { ObjectId } = require("mongodb");
+const router = express.Router();
 
-// ✅ Fetch all rejected requests
+
+// 📌 Get all rejected requests
 router.get("/rejectedlist", async (req, res) => {
     const db = req.app.locals.db;
-    
+
     try {
         const rejectedRequests = await db.collection("rejectedlist").find().toArray();
         res.json(rejectedRequests);
@@ -14,5 +15,7 @@ router.get("/rejectedlist", async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+// 📌 Reject a pending request
 
 module.exports = router;

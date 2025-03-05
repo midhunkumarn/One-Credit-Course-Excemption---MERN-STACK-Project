@@ -3,6 +3,7 @@ const { ObjectId } = require("mongodb");
 
 const router = express.Router();
 
+// 📌 Get Pending Requests
 router.get("/pendinglist", async (req, res) => {
     try {
         const db = req.app.locals.db;
@@ -14,6 +15,7 @@ router.get("/pendinglist", async (req, res) => {
     }
 });
 
+// 📌 Approve Request
 router.post("/approve", async (req, res) => {
     const db = req.app.locals.db;
     const { _id } = req.body;
@@ -30,13 +32,13 @@ router.post("/approve", async (req, res) => {
         const pendingItem = await db.collection("pendinglist").findOne({ _id: objectId });
 
         if (!pendingItem) {
-            return res.status(404).json({ message: "Request not found." });
+            return res.status(404).json({ message: "❌ Request not found." });
         }
 
         // Move data to approvedlist
         await db.collection("approvedlist").insertOne({
             ...pendingItem,
-            approvedDate: new Date().toISOString().split("T")[0]
+            approvedDate: new Date().toISOString().split("T")[0] // Add approval date
         });
 
         // Remove from pendinglist
@@ -49,6 +51,7 @@ router.post("/approve", async (req, res) => {
     }
 });
 
+// 📌 Reject Request
 router.post("/reject", async (req, res) => {
     const db = req.app.locals.db;
     const { _id, reason } = req.body;
@@ -58,27 +61,28 @@ router.post("/reject", async (req, res) => {
     }
 
     if (!reason || !reason.trim()) {
-        return res.status(400).json({ message: "❌ Reason is required" });
+        return res.status(400).json({ message: "❌ Reason is required for rejection" });
     }
 
     try {
         const objectId = new ObjectId(_id);
         console.log("🔍 Rejecting request with ID:", objectId, "Reason:", reason);
 
-        // Find and remove from pendinglist
+        // Find the request in pendinglist
         const pendingItem = await db.collection("pendinglist").findOne({ _id: objectId });
 
-        if (!pendingItem || !pendingItem.value) {
-            return res.status(404).json({ message: "Request not found." });
+        if (!pendingItem) {
+            return res.status(404).json({ message: "❌ Request not found." });
         }
 
-        // Insert into rejectedlist
+        // Move data to rejectedlist
         await db.collection("rejectedlist").insertOne({
-            ...pendingItem, // Spread existing data
+            ...pendingItem, // Copy existing data
             rejectedDate: new Date().toISOString().split("T")[0], // Add rejection date
-            reason // Add rejection reason
+            reason // Store rejection reason
         });
 
+        // Remove from pendinglist
         await db.collection("pendinglist").deleteOne({ _id: objectId });
 
         res.json({ message: "✅ Request rejected and moved to rejectedlist." });
