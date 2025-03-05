@@ -9,7 +9,7 @@ export default function PendingList({ onApprove, onReject }) {
 
     // ✅ Fetch Pending Requests from Backend
     useEffect(() => {
-        fetch("http://localhost:5000/pending") // Backend URL
+        fetch("http://localhost:5000/home/pendinglist") // Backend URL
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -27,11 +27,26 @@ export default function PendingList({ onApprove, onReject }) {
         setSelectedRequest(request);
     };
 
-    const handleApprove = () => {
+    const handleApprove = async () => {
         if (!selectedRequest) return;
-        onApprove(selectedRequest);
-        setPendingRequests(pendingRequests.filter(req => req._id !== selectedRequest._id));
-        setSelectedRequest(null);
+    
+        try {
+            const response = await fetch("http://localhost:5000/home/approve", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ _id: selectedRequest._id }) // Sending object ID
+            });
+    
+            if (response.ok) {
+                console.log("✅ Request approved successfully!");
+                setPendingRequests(pendingRequests.filter(req => req._id !== selectedRequest._id));
+                setSelectedRequest(null);
+            } else {
+                console.error("❌ Failed to approve request:", await response.text());
+            }
+        } catch (error) {
+            console.error("❌ Error approving request:", error);
+        }
     };
 
     const handleReject = () => {

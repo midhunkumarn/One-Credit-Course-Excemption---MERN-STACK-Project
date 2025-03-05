@@ -1,131 +1,36 @@
-/* Faculty Dashboard Container */
-.faculty-container {
-    display: flex;
-    min-height: 100vh;
-    background-color: #f5f7fa;
-}
-
-/* Main Content */
-.dashboard-content {
-    flex-grow: 1;
-    margin-left: 270px; /* Adjust for sidebar */
-    padding: 30px;
-    transition: margin-left 0.3s ease-in-out;
-}
-
-@media screen and (max-width: 768px) {
-    .dashboard-content {
-        margin-left: 0;
-        padding: 20px;
-    }
-}
-
-/* Card Table */
-.card-table {
+.table-container {
     width: 100%;
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow-x: auto; /* Ensures horizontal scrolling on small screens */
+    overflow-x: auto;
+    margin-top: 20px;
 }
 
-/* Header Row */
-.card-table-header {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1.5fr 2fr 1.5fr 1fr 1fr;
-    font-weight: bold;
-    background: #2c3e50; /* Dark Blue Shade */
-    color: white;
-    padding: 12px;
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
     border-radius: 8px;
-    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Data Row */
-.card-table-row {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1.5fr 2fr 1.5fr 1fr 1fr;
+.custom-table thead {
+    background-color: #f28b82;
+    color: white;
+}
+
+.custom-table th, .custom-table td {
     padding: 12px;
+    text-align: left;
     border-bottom: 1px solid #ddd;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.no-data {
     text-align: center;
-}
-
-.card-table-row:nth-child(even) {
-    background: #f9f9f9;
-}
-
-/* Button Styles */
-.verify-btn, .approve-btn, .reject-btn, .close-btn {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.verify-btn {
-    background: #2980b9;
-    color: white;
-}
-
-.approve-btn {
-    background: #27ae60;
-    color: white;
-}
-
-.reject-btn {
-    background: #c0392b;
-    color: white;
-}
-
-.close-btn {
-    background: #7f8c8d;
-    color: white;
-}
-
-/* Modal Styling */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background: white;
+    font-size: 1.2em;
+    color: #888;
     padding: 20px;
-    border-radius: 10px;
-    width: 400px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Textarea */
-.reject-reason {
-    width: 100%;
-    height: 80px;
-    margin-top: 10px;
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    resize: none;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .card-table-header,
-    .card-table-row {
-        grid-template-columns: 1fr;
-        padding: 10px;
-    }
-    .card-table span {
-        display: block;
-        padding: 5px 0;
-    }
 }

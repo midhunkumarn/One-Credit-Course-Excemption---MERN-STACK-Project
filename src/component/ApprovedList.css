@@ -1,64 +1,39 @@
-/* Faculty Dashboard Container */
-.faculty-container {
-    display: flex;
-    min-height: 100vh;
-    background-color: #f5f7fa;
-}
-
-/* Main Content */
-.dashboard-content {
-    flex-grow: 1;
-    margin-left: 270px; /* Adjust for sidebar */
-    padding: 30px;
-    transition: margin-left 0.3s ease-in-out;
-}
-
-@media screen and (max-width: 768px) {
-    .dashboard-content {
-        margin-left: 0;
-    }
-}
-
-/* Card Table */
-.card-table {
+.table-container {
     width: 100%;
-    background: white;
+    overflow-x: auto;
+    padding: 20px;
+}
+
+.approved-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
     border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
-/* Header Row */
-.card-table-header {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1.5fr 2fr 1.5fr 1fr 1fr;
+.approved-table thead tr {
+    background-color: #0d8439; /* Light red shade similar to your screenshot */
+    color: #000;
     font-weight: bold;
-    background: #e0f7e9; /* Light Green Shade */
-    padding: 12px;
-    border-radius: 8px;
+    text-align: left;
 }
 
-/* Data Row */
-.card-table-row {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1.5fr 2fr 1.5fr 1fr 1fr;
-    padding: 12px;
+.approved-table th, 
+.approved-table td {
+    padding: 12px 15px;
     border-bottom: 1px solid #ddd;
+    text-align: center;
 }
 
-.card-table-row:nth-child(even) {
-    background: #f9f9f9;
+.approved-table tbody tr:hover {
+    background-color: #f3f3f3;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .card-table-header,
-    .card-table-row {
-        grid-template-columns: 1fr;
-        padding: 10px;
-    }
-    .card-table span {
-        display: block;
-        padding: 5px 0;
-    }
+.no-data {
+    text-align: center;
+    font-size: 1.2em;
+    color: #888;
+    padding: 15px;
 }
