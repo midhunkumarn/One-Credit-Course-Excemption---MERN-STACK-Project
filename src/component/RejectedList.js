@@ -5,7 +5,7 @@ import "./RejectedList.css";
 export default function RejectedList() {
     const [rejectedRequests, setRejectedRequests] = useState([]);
 
-    // ✅ Fetch rejected requests from backend on component mount
+   
     useEffect(() => {
         const fetchRejectedRequests = async () => {
             try {

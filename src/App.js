@@ -5,12 +5,13 @@ import Logout from "./component/logout";
 import Home from "./component/Home";
 import Ongoing from "./component/Ongoing";
 import Completed from "./component/Completed";
-import Excemption from "./component/Excemption";
 import FacultyDashboard from "./component/FacultyDashboard";
 import PendingList from "./component/PendingList";
 import ApprovedList from "./component/ApprovedList";
 import RejectedList from "./component/RejectedList";
 import OverallList from "./component/OverallList";
+import ExcemptionCard from "./component/ExcemptionCard";
+import Excemption from "./component/Excemption";
 
 function App() {
     // ✅ State for storing approved and rejected requests
@@ -30,15 +31,15 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                {/* ✅ Student Routes */}
+                
                 <Route path="/" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/ongoing" element={<Ongoing />} />
                 <Route path="/completed" element={<Completed />} />
-                <Route path="/excemption" element={<Excemption />} />
+                <Route path="/exempt" element={<Excemption/>} />
 
-                {/* ✅ Faculty Routes */}
+               
                 <Route path="/faculty" element={<FacultyDashboard />} />
                 <Route path="/faculty/pending" element={<PendingList onApprove={handleApprove} onReject={handleReject} />} />
                 <Route path="/faculty/approved" element={<ApprovedList approvedRequests={approvedRequests} />} />

@@ -6,6 +6,28 @@ export default function FacultyDashboard() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
+    const [counts, setCounts] = useState({
+        pending: 0,
+        approved: 0,
+        rejected: 0,
+        overall: 0
+    });
+
+    useEffect(() => {
+        const fetchCounts = async () => {
+            try {
+                const response = await fetch("http://localhost:5000/home/dashboard-counts");
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                const data = await response.json();
+                setCounts(data);
+            } catch (error) {
+                console.error("❌ Error fetching dashboard counts:", error);
+            }
+        };
+
+        fetchCounts();
+    }, []);
+
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
@@ -36,22 +58,22 @@ export default function FacultyDashboard() {
                 <div className="cards-container">
                     <div className="card pending">
                         <h2>Pending List</h2>
-                        <p>12 Pending Requests</p>
+                        <p>{counts.pending} Pending Requests</p>
                     </div>
 
                     <div className="card approved">
                         <h2>Approved List</h2>
-                        <p>45 Approved Requests</p>
+                        <p>{counts.approved} Approved Requests</p>
                     </div>
 
                     <div className="card rejected">
                         <h2>Rejected List</h2>
-                        <p>8 Rejected Requests</p>
+                        <p>{counts.rejected} Rejected Requests</p>
                     </div>
 
                     <div className="card overall">
                         <h2>Overall List</h2>
-                        <p>65 Total Requests</p>
+                        <p>{counts.overall} Total Requests</p>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@ export default function FacultySidebar({ isOpen, setIsOpen }) {
                             className="row"
                             id={window.location.pathname === item.link ? "active" : ""}
                             onClick={() => {
-                                if (setIsOpen) setIsOpen(false); // ✅ Only call if it's defined
+                                if (setIsOpen) setIsOpen(false);
                                 navigate(item.link);
                             }}
                         >

@@ -8,7 +8,7 @@ const ExemptionStatusCard = ({ status, date, time }) => {
             <p className={`exemption-status ${status === 'Approved' ? 'approved' : 'pending'}`}>
                 {status}
             </p>
-            <p className="exemption-date">Date: {date}</p>
+            <p className="exemption-date">Date: 22/10/2024</p>
         </div>
     );
 };

@@ -40,7 +40,7 @@ async function database_connection() {
 app.use("/home", require("./home/pending.js")); 
 app.use("/approve", require("./home/approve.js"));
 app.use("/reject", require("./home/reject.js")); 
-
+// app.use("/dashboard", require("./home/dashboard.js"));
 
 // Ensure database connection before server starts
 database_connection().then(() => {

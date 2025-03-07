@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import FacultySidebar from "./FacultySidebar";
-import "./ApprovedList.css"; // Ensure CSS is updated for table styling
+import "./ApprovedList.css"; 
 
 export default function ApprovedList() {
     const [approvedRequests, setApprovedRequests] = useState([]);

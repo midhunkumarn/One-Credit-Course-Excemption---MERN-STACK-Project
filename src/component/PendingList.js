@@ -8,7 +8,6 @@ export default function PendingList() {
     const [selectedRequest, setSelectedRequest] = useState(null);
     const [reason, setReason] = useState("");
 
-    // ✅ Fetch Pending Requests from Backend
     useEffect(() => {
         fetchPendingRequests();
     }, []);
@@ -70,14 +69,14 @@ export default function PendingList() {
                 const result = await response.json();
                 console.log("❌ Request rejected successfully!", result);
 
-                // ✅ Remove request from pending list
+                
                 setPendingRequests(pendingRequests.filter(req => req._id !== selectedRequest._id));
 
-                // ✅ Add to rejected list
+                
                 setRejectedRequests(prev => [...prev, { ...selectedRequest, reason }]);
 
                 setSelectedRequest(null);
-                setReason(""); // Clear reason input
+                setReason(""); 
             } else {
                 console.error("❌ Failed to reject request:", await response.text());
             }
@@ -118,7 +117,7 @@ export default function PendingList() {
                     )}
                 </div>
 
-                {/* ✅ Rejected Requests Section */}
+              
                
             </div>
 

@@ -4,7 +4,7 @@ import { SidebarData } from './SidebarData';
 import { useNavigate } from 'react-router-dom';
 
 export default function Sidebar({ isOpen, setIsOpen }) {
-    const navigate = useNavigate(); // ✅ Use React Router for navigation
+    const navigate = useNavigate(); 
 
     if (typeof setIsOpen !== 'function') {
         console.error("setIsOpen is not a function. Make sure Sidebar is receiving the prop correctly.");
@@ -12,21 +12,19 @@ export default function Sidebar({ isOpen, setIsOpen }) {
     }
 
     const handleLogout = () => {
-        localStorage.removeItem('user'); // ✅ Ensure correct key is removed
-        navigate('/logout'); // ✅ Redirect using React Router
+        localStorage.removeItem('user'); 
+        navigate('/logout'); 
     };
 
     return (
         <>
-            {/* Toggle Button */}
+           
             <button className={`toggle-btn ${isOpen ? "active" : ""}`} onClick={() => setIsOpen(!isOpen)}>
                 ☰
             </button>
 
-            {/* Overlay (for closing sidebar) */}
             {isOpen && <div className="overlay active" onClick={() => setIsOpen(false)}></div>}
 
-            {/* Sidebar */}
             <div className={`Sidebar ${isOpen ? "active" : ""}`}>
                 <ul className="SidebarList">
                     {SidebarData.map((val, key) => (
@@ -34,11 +32,11 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                             className="row"
                             id={window.location.pathname === val.link ? "active" : ""}
                             onClick={() => {
-                                setIsOpen(false); // Close sidebar after clicking
+                                setIsOpen(false); 
                                 if (val.title === "Logout") {
-                                    handleLogout(); // ✅ Call logout function
+                                    handleLogout(); 
                                 } else {
-                                    navigate(val.link); // ✅ Use React Router
+                                    navigate(val.link); 
                                 }
                             }}
                         >

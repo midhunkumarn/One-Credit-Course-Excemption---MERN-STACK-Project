@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import FacultySidebar from "./FacultySidebar";  // ✅ Import Faculty Sidebar
+import FacultySidebar from "./FacultySidebar";
 
 export default function Layout({ children }) {
     const location = useLocation();
     const navigate = useNavigate();
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true); // Sidebar should be visible initially
 
     useEffect(() => {
-        // ✅ Redirect to login if user is not authenticated
         const user = localStorage.getItem("user");
         if (!user) {
             navigate("/");
@@ -17,15 +16,18 @@ export default function Layout({ children }) {
     }, [location.pathname, navigate]);
 
     return (
-        <div className="App">
-            {/* ✅ Show FacultySidebar only for faculty pages */}
+        <div style={{ display: "flex", minHeight: "100vh" }}>
+            {/* Show FacultySidebar for faculty pages, else show Student Sidebar */}
             {location.pathname.startsWith("/faculty") ? (
-                <FacultySidebar />
+                <FacultySidebar isOpen={isOpen} setIsOpen={setIsOpen} />
             ) : (
                 location.pathname !== "/" && location.pathname !== "/logout" && <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
             )}
 
-            <div className="main-content">{children}</div>
+            {/* Push content to the right so sidebar doesn't overlap */}
+            <div style={{ flex: 1, padding: "20px", marginLeft: isOpen ? "250px" : "0px", transition: "margin-left 0.3s ease" }}>
+                {children}
+            </div>
         </div>
     );
 }

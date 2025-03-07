@@ -20,7 +20,7 @@ export const SidebarData = [
     {
         title:"Exemption",
         icon: <FaGraduationCap />,
-        link: "/Exemption",
+        link: "/exempt",
     },
     {
         title: "Profile",
